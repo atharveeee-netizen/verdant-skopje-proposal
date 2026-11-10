@@ -64,7 +64,7 @@ tex_content = r"""\documentclass[9pt,a4paper]{article}
 % =============================================================
 \thispagestyle{empty}
 \begin{center}
-  {\textsf{\fontsize{6.5pt}{8pt}\selectfont EPICS IN IEEE $\cdot$ OCTOBER 2026 CALL FOR PROPOSALS}}\\[0.3em]
+  {\textsf{\fontsize{6.5pt}{8pt}\selectfont IEEE HUMANITARIAN TECHNOLOGIES $\cdot$ 2026 CALL FOR PROPOSALS}}\\[0.3em]
   {\textsf{\fontsize{26pt}{30pt}\bfseries\selectfont VERDANT}}\\[0.25em]
   {\textsf{\fontsize{9pt}{11.5pt}\selectfont An air-gapped document intelligence and cadastral reconciliation\\system for municipal green infrastructure protection and compensatory reforestation}}\\[0.2em]
   {\textsf{\fontsize{8pt}{10pt}\selectfont Skopje, North Macedonia}}

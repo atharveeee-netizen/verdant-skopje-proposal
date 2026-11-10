@@ -6,7 +6,7 @@
 [![Document Length](https://img.shields.io/badge/Proposal-Strictly%208%20Pages%20XeLaTeX-black.svg)](verdant_proposal.pdf)
 [![Budget](https://img.shields.io/badge/Budget-USD%2040%2C000%20(Direct%20Materials)-darkgreen.svg)](verdant_proposal.pdf)
 
-> **Master IEEE EPICS & UNDP GenAI for Good (Cities Edition) Proposal**  
+> **Master IEEE Humanitarian Technologies & UNDP GenAI for Good (Cities Edition) Proposal**  
 > **Track 3: Safeguarding Green Infrastructure in Skopje, North Macedonia**  
 > *An air-gapped document intelligence and cadastral reconciliation system for municipal green infrastructure protection and compensatory reforestation.*
 
@@ -54,7 +54,7 @@ The proposal document (`verdant_proposal.tex` $ightarrow$ `verdant_proposal.pdf
 
 ## 4. Itemized Budget & Funding Allocation ($40,000 USD)
 
-In compliance with IEEE EPICS and IEEE Humanitarian Technologies financial guidelines, **100% of the requested USD 40,000 (INR 37,20,000 at INR 93/USD)** is allocated exclusively to direct materials, hardware testbeds, mobile audit kits, tree tagging consumables, and local municipal transit. **Zero grant funds are requested for personnel salaries, student stipends, computers, overhead, or unitemised contingency.**
+In compliance with IEEE Humanitarian Technologies financial guidelines, **100% of the requested USD 40,000 (INR 37,20,000 at INR 93/USD)** is allocated exclusively to direct materials, hardware testbeds, mobile audit kits, tree tagging consumables, and local municipal transit. **Zero grant funds are requested for personnel salaries, student stipends, computers, overhead, or unitemised contingency.**
 
 ### Master Budget Summary
 
@@ -71,7 +71,7 @@ In compliance with IEEE EPICS and IEEE Humanitarian Technologies financial guide
 | **Total** | **Direct Project Allocation** | **All lines direct implementation $\cdot$ GST & Customs Included** | **\$40,000** | **₹37,20,000** |
 
 ### Consortium & Travel Justification
-- **International Travel Policy:** In accordance with IEEE EPICS rules, **no grant funds are allocated to international airfares or foreign per-diems**.
+- **International Travel Policy:** In accordance with IEEE Humanitarian Technologies rules, **no grant funds are allocated to international airfares or foreign per-diems**.
 - **Consortium Model:** Software engineering, containerization, algorithm calibration, and hardware staging are executed remotely by the core student engineering team. All on-ground archival digitization, field inspections, and travel are executed **domestically within the Skopje Valley** by the local municipal community partner (**PE "Parks and Greenery"** field arborists and City of Skopje environmental inspectors).
 
 ---
