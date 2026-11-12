@@ -1,19 +1,39 @@
 \documentclass[9pt,a4paper]{article}
 
 \usepackage{fontspec}
-\setmainfont{Cambria}[
-  BoldFont = {Cambria Bold},
-  ItalicFont = {Cambria Italic},
-  BoldItalicFont = {Cambria Bold Italic}
-]
-\setsansfont{Segoe UI}[
-  BoldFont = {Segoe UI Bold},
-  ItalicFont = {Segoe UI Italic},
-  BoldItalicFont = {Segoe UI Bold Italic}
-]
-\setmonofont{Courier New}
 
-% Exact margins from SHWAS gold-standard analysis: left=41.1pt, right=41.1pt, top=36pt, bottom=40pt
+% Open-source font fallbacks: Cambria for Unicode/Cyrillic support; Caladea / Times New Roman as fallbacks
+\IfFontExistsTF{Cambria}{
+  \setmainfont{Cambria}[
+    BoldFont = {Cambria Bold},
+    ItalicFont = {Cambria Italic},
+    BoldItalicFont = {Cambria Bold Italic}
+  ]
+}{
+  \IfFontExistsTF{DejaVu Serif}{
+    \setmainfont{DejaVu Serif}
+  }{
+    \setmainfont{Caladea}
+  }
+}
+
+\IfFontExistsTF{Noto Sans}{
+  \setsansfont{Noto Sans}[
+    BoldFont = {Noto Sans Bold},
+    ItalicFont = {Noto Sans Italic},
+    BoldItalicFont = {Noto Sans Bold Italic}
+  ]
+}{
+  \setsansfont{Segoe UI}
+}
+
+\IfFontExistsTF{Liberation Mono}{
+  \setmonofont{Liberation Mono}
+}{
+  \setmonofont{Courier New}
+}
+
+% Geometry: left=41.1pt, right=41.1pt, top=36pt, bottom=40pt
 \usepackage[top=36pt, bottom=40pt, left=41.1pt, right=41.1pt]{geometry}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -26,15 +46,15 @@
 \usepackage{enumitem}
 \usepackage{caption}
 
-% Zero color policy: strict monochrome publication layout
+% Monochrome publication layout
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\textsf{\fontsize{6.5pt}{8pt}\selectfont\textbf{VERDANT} $\cdot$ IEEE HT \& UNDP GenAI for Good Proposal}}
+\fancyhead[L]{\textsf{\fontsize{6.5pt}{8pt}\selectfont\textbf{VERDANT} $\cdot$ IEEE HT \& UNDP GenAI for Good (Cities Edition) Proposal}}
 \fancyhead[R]{\textsf{\fontsize{6.5pt}{8pt}\selectfont\thepage}}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% Section formatting matching SHWAS exactly
+% Section formatting
 \titleformat{\section}{\fontsize{9.5pt}{11.5pt}\sffamily\bfseries}{\thesection}{0.4em}{}
 \titleformat{\subsection}{\fontsize{8.5pt}{10.5pt}\sffamily\bfseries}{\thesubsection}{0.4em}{}
 \titlespacing*{\section}{0pt}{4pt}{1.5pt}
@@ -43,7 +63,7 @@
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{2.5pt}
 
-% Caption styling matching SHWAS: Cambria Bold label + Cambria body
+% Caption styling
 \DeclareCaptionFont{captionfont}{\fontsize{8pt}{10pt}\selectfont}
 \DeclareCaptionFont{captionlabelfont}{\fontsize{8pt}{10pt}\bfseries\selectfont}
 \captionsetup{font=captionfont, labelfont=captionlabelfont, labelsep=period, skip=2pt}
@@ -52,14 +72,14 @@
 \fontsize{9pt}{10.9pt}\selectfont
 
 % =============================================================
-% PAGE 1: TITLE, METADATA, HUMAN STORY, PROBLEM
+% PAGE 1: TITLE, METADATA, WORKED EXAMPLE, PROBLEM FORMULATION
 % =============================================================
 \thispagestyle{empty}
 \begin{center}
   {\textsf{\fontsize{6.5pt}{8pt}\selectfont IEEE HUMANITARIAN TECHNOLOGIES $\cdot$ 2026 CALL FOR PROPOSALS}}\\[0.3em]
-  {\textsf{\fontsize{26pt}{30pt}\bfseries\selectfont VERDANT}}\\[0.25em]
-  {\textsf{\fontsize{9pt}{11.5pt}\selectfont A sovereign document intelligence and cadastral reconciliation system\\for municipal green infrastructure protection and compensatory reforestation}}\\[0.2em]
-  {\textsf{\fontsize{8pt}{10pt}\selectfont Skopje, North Macedonia}}
+  {\textsf{\fontsize{24pt}{28pt}\bfseries\selectfont VERDANT}}\\[0.25em]
+  {\textsf{\fontsize{9pt}{11.5pt}\selectfont An Open-Source GENIE.AI Assistant for Municipal Green Cadastre Modernization\\Turning Archival Tree Felling Permits into Reviewable Green Cadastre Update Proposals}}\\[0.2em]
+  {\textsf{\fontsize{8pt}{10pt}\selectfont Skopje, North Macedonia $\cdot$ Track 3: Safeguarding Green Infrastructure}}
 \end{center}
 
 \vspace{-0.2em}
@@ -67,10 +87,10 @@
 \textsf{\fontsize{7.5pt}{9.5pt}\selectfont
 \begin{tabular}{|p{3.0cm}p{13.6cm}|}
 \hline
-\textbf{Requested} & \textbf{USD 40,000}, direct materials, edge compute nodes, and local deployment only \\
-\textbf{Duration} & 12 months $\cdot$ Pillar Environmental Sustainability \& Cities $\cdot$ Society IEEE Geoscience and Remote Sensing / Computer Society \\
-\textbf{Deliverable} & 1 air-gapped municipal intake station, 10 open-source QField audit configurations, 3,000 reconciled permit records into the Skopje Digital Green Cadastre, public compensatory replanting ledger \\
-\textbf{Direct beneficiaries} & 540,000 in year one across the 10 municipalities of the City of Skopje \\
+\textbf{Funding Scope} & \textbf{USD 10,000 (Prototype Phase)}; Staged Pilot Blueprint: \textbf{USD 30,000} through 31 Dec 2027 \\
+\textbf{Framework} & UNDP GENIE.AI Platform Integration $\cdot$ Society IEEE Geoscience and Remote Sensing / Computer Society \\
+\textbf{Core Deliverables} & Open-source document intelligence pipeline, synthetic permit generator, 200-permit double-annotated gold evaluation set, symmetric 1-click staff review console, and PostGIS Q\&A engine \\
+\textbf{Headline Principle} & \textbf{``The tool proposes, staff decide''} $\cdot$ Zero unreviewed writes to municipal records \\
 \hline
 \end{tabular}
 }
@@ -83,39 +103,40 @@
 \textbf{Project lead} & Atharve Dahima, Electronics and Communication Engineering, IEEE Student Member, Malaviya National Institute of Technology Jaipur. \texttt{atharvedahima@gmail.com} \\
 \textbf{Consortium Team} & Core AI \& Systems Engineering Team (IEEE MNIT Student Branch); Srajan Mishra, Electronics and Communication Engineering, IEEE Student Member; Student Systems Researchers \\
 \textbf{Faculty mentor} & Dr. Vishal Sharma, Department of Electronics and Communication Engineering, Malaviya National Institute of Technology Jaipur. \texttt{vishal.ece@mnit.ac.in} \\
-\textbf{Institution} & Malaviya National Institute of Technology Jaipur (MNIT Jaipur), Jawahar Lal Nehru Marg, Jaipur, Rajasthan 302017, India \\
-\textbf{Prospective Partner} & Sector for Environmental Protection, City of Skopje \& PE ``Parks and Greenery'' (\textit{ЈП Паркови и Зеленило}), Bul. Ilinden 82, 1000 Skopje \\
+\textbf{Lead Institution} & Malaviya National Institute of Technology Jaipur (MNIT Jaipur), Jawahar Lal Nehru Marg, Jaipur, Rajasthan 302017, India \\
+\textbf{Prospective Partner} & Sector for Environmental Protection, City of Skopje \& PE ``Parks and Greenery'' (\textit{ЈП Паркови и Зеленило}), Bul. Ilinden 82, 1000 Skopje (Status: Support Letter Requested) \\
 \textbf{Cadastral Authority} & Agency for Real Estate Cadastre (AREC / \textit{АКН}), Republic of North Macedonia \\
 \end{tabularx}
 \end{center}
 
 \vspace{-0.1em}
-\subsection*{The people this is for}
-In the Skopje Valley, winter particulate pollution ($\text{PM}_{2.5}$) is a direct physical reality. Trapped by thermal temperature inversions between the Vodno and Skopska Crna Gora mountain ranges, urban basin concentrations regularly exceed World Health Organization safety guidelines by 5.5 to 11.2 times ($82.4\text{ to }168.0\text{ }\mu\text{g/m}^3$). For families along congested transport corridors such as Partizanski Odredi and Boris Trajkovski, domestic life requires sealing windows and relying on medical filtration.
+\subsection*{The staff member's problem: Today's administrative reality}
+In the City of Skopje's Sector for Environmental Protection and PE ``Parks and Greenery'', an urban arborist sits between stacks of paper folders. Approvals for tree fellings arrive from multiple municipal sectors---Urban Planning, Communal Affairs, and municipal inspectors across ten valley municipalities. Over 3,000 historical and active felling permits sit stored in municipal paper archives. Many are occluded by circular purple rubber stamps; others contain cursive Cyrillic handwriting dating back to Yugoslav cadastral divisions.
 
-In Aerodrom and Centar, municipal arborists with decades of service manage aging tree populations under severe operational constraints. They operate with handwritten paper archives and legacy paper registers that decay in basement storage rooms. When commercial plots and transport boulevards are widened, mature plane trees (\textit{Platanus orientalis}) and lindens are felled under municipal permits. Although Macedonian law and municipal regulations mandate compensatory replanting---typically requiring three to five replacement saplings for every mature tree removed---the administrative link between issued felling permits and executed compensatory planting is broken.
+Under national legislation and municipal decrees, every authorized tree removal carries a statutory compensatory obligation: developers must plant three to five replacement saplings. Today, verifying compliance requires an arborist to manually cross-reference paper permit numbers against microfilm parcel records in the Agency for Real Estate Cadastre (AREC / \textit{АКН}). With dozens of urgent storm-hazard calls pending each week, manual parcel tracking is physically impossible. As a result, issued replanting mandates remain largely unverified.
 
-Over 3,000 historical and active felling permits sit trapped in municipal paper storage across Skopje's ten valley municipalities. Because these permits are un-indexed and lack digital cadastral cross-referencing, municipal arborists cannot track whether mandatory saplings were ever planted.
+\vspace{0.1em}
+\subsection*{1.1 Worked example: From archival scan to staff decision}
+VERDANT solves this without taking decision-making power away from municipal staff. The entire pipeline functions as an automated assistant that prepares reviewable candidate diffs:
 
 \vspace{0.1em}
 \begin{center}
 \fcolorbox{black}{gray!10}{
 \begin{minipage}{0.96\textwidth}
-\centering
-\itshape\fontsize{8.5pt}{10.5pt}\selectfont
-``Every winter our children choke on particulate smog while mature trees are removed for commercial construction. Without transparent digital tracking, issued replanting mandates remain completely unverified.''\\
-\vspace{0.1em}
-\textsf{\fontsize{6.5pt}{8pt}\selectfont Citizen Testimony from Public Municipal Consultations on Clean Air and Urban Forestry in Skopje}
+\fontsize{8pt}{10pt}\selectfont
+\textbf{Step 1 (Input):} Archival 300 DPI scan of Permit Ref. \texttt{14-3821/2} (КО Centar, dated 14.11.2018).\\
+\textbf{Step 2 (Read \& Extract):} Dual-channel OCR extracts text tokens and bounding box $[x_1: 45, y_1: 110, x_2: 380, y_2: 145]$. South Slavic CLASSLA normalizes species \textit{Јавор} to \textit{Platanus orientalis}, count to $2$ mature trees, parcel ID to \texttt{KP 1408/2}, and statutory replanting obligation to $8$ saplings (\textit{Acer pseudoplatanus}).\\
+\textbf{Step 3 (Deterministic Verify):} System queries AREC GIS layer: parcel \texttt{1408/2} exists; counts sum correctly; street address matches parcel polygon boundaries.\\
+\textbf{Step 4 (Staff Review Console):} UI displays proposed diff against Green Cadastre parcel layer alongside the highlighted source image snippet with conformal confidence score ($0.96$).\\
+\textbf{Step 5 (Decision):} Municipal officer clicks \textbf{[Approve]}. Cadastre records $2$ removals with archive links; replanting ledger opens a tracking obligation for $8$ saplings due in 12 months. Rejecting takes the exact same single click.
 \end{minipage}
 }
 \end{center}
 \vspace{0.1em}
 
-We are student engineers, and our contribution is straightforward: build a sovereign, air-gapped document intelligence and cadastral reconciliation system that extracts legal felling permits, binds them deterministically to cadastral land parcels, and gives municipal inspectors a verification tool within twelve months.
-
 \vspace{-0.1em}
-\section{The problem}
-Mature trees are removed across Skopje to accommodate high-density construction and infrastructure expansions. Private developments dominate the urban core, exacerbating the urban heat island effect and removing vital bio-filtration canopy.
+\section{The problem and municipal context}
+Winter particulate pollution ($\text{PM}_{2.5}$) in Skopje regularly reaches $82.4\text{ to }168.0\text{ }\mu\text{g/m}^3$, exceeding the WHO 24-hour guideline ($15.0\text{ }\mu\text{g/m}^3$) by 5.5 to 11.2 times due to valley inversions. Mature plane trees and lindens provide critical particulate interception and summer cooling. Reconciling permits with the Green Cadastre (*Зелен Катастар*) is essential to halt uncompensated canopy loss.
 
 \vspace{0.1em}
 \begin{table}[h!]
@@ -128,41 +149,40 @@ Mature trees are removed across Skopje to accommodate high-density construction 
 Winter $\text{PM}_{2.5}$ mean concentration, Skopje urban basins & 82.4 to $168.0\text{ }\mu\text{g/m}^3$ \\
 World Health Organization 24-hour limit & $15.0\text{ }\mu\text{g/m}^3$ \\
 \textbf{Exceedance} & \textbf{5.5 to 11.2 times} \\
-Backlog of physical paper permits in municipal archives requiring digitization & $\approx 3,000$ permits \\
+Estimated paper felling permit backlog requiring cadastral reconciliation & $\approx 3,000$ permits \\
 Estimated unverified compensatory sapling obligations & $\approx 9,000\text{ to }15,000$ saplings \\
-Permits carrying circular municipal rubber stamps occluding text & $> 80\%$ \\
+Archival permits carrying circular purple rubber stamp occlusions & $> 80\%$ \\
 Baseline Green Cadastre inventory (City of Skopje / UNDP Resilient Skopje, 2020--2021) & 65,000 public trees \\
-Cadastral parcel mutation rate (historical parcels subdivided over time) & Significant \\
-Statutory compensatory planting ratio mandated per felling & 3 to 5 saplings \\
+Statutory compensatory planting ratio mandated per felling & 3 to 5 replacement saplings \\
 Felling sites receiving physical on-site post-cut verification by arborists & $< 15\%$ \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \vspace{-0.4em}
-Because tree removals happen behind temporary construction hoardings, citizens and inspectors lose canopy cover without an accessible spatial record. Manual paper lookup has failed to close this gap; an automated, sovereign engineering solution is required.
+VERDANT bridges this gap with an open-source, GENIE.AI-aligned software assistant that turns archival paper files into verified cadastral records.
 
 \clearpage
 
 % =============================================================
-% PAGE 2: CHARTS, COMPARISON, WHY NOT SOLVED, REAL SAMPLE
+% PAGE 2: CHARTS, COMPARISON, WHY NOT SOLVED, REAL DATA SITUATION
 % =============================================================
 \begin{minipage}{0.48\textwidth}
   \centering
   \includegraphics[width=\textwidth,height=1.45in]{figures/fig1_canopy_loss.png}
-  \vspace{-0.4em}
+  \vspace{0.2em}
   \captionof{figure}{Estimated uncompensated tree felling burden across municipal zones based on civic tree-removal monitoring reports.}\label{fig:canopy}
 \end{minipage}
 \hfill
 \begin{minipage}{0.48\textwidth}
   \centering
   \includegraphics[width=\textwidth,height=1.45in]{figures/fig2_intervention_node.png}
-  \vspace{-0.4em}
+  \vspace{0.2em}
   \captionof{figure}{The intervention acts at one node: automated intake and conformal gating before permit records enter bureaucratic silos.}\label{fig:intervention}
 \end{minipage}
 
 \vspace{0.2em}
-\subsection*{1.1 Two clusters, one hazard}
+\subsection*{1.2 Two clusters across the ten municipalities of Skopje}
 \renewcommand{\arraystretch}{0.92}
 \begin{tabularx}{\textwidth}{@{}lXX@{}}
 \toprule
@@ -173,37 +193,47 @@ Because tree removals happen behind temporary construction hoardings, citizens a
 \textbf{Operations} & Commercial construction clearings, utility trenching & Conversion of peri-urban parcels, boundary encroachments \\
 \textbf{Exposed} & Severe street canopy loss and localized heat stress & Degradation of natural mountain drainage and dust protection \\
 \textbf{Protection} & Paper permit registry with manual municipal archiving & Unpatrolled boundary lines and unmapped historical cuts \\
-\textbf{Audit tool} & \textbf{K1} Mobile Tablet running QField spatial forms & \textbf{K2} Mobile Tablet with GNSS forestry mapping profiles \\
+\textbf{Verification} & On-premise review console with AREC parcel validation & Spatial GIS queries cross-referencing buffer zone boundaries \\
 \bottomrule
 \end{tabularx}
 
 \vspace{0.2em}
-\section{Why it has not been solved}
-The initial public GIS inventory was established in 2020--2021 under the City of Skopje with UNDP/REC support (*Resilient Skopje*), mapping approximately 65,000 public trees. However, routine compliance tracking of felling permits and compensatory planting remains un-automated due to structural engineering barriers:
+\section{Why it has not been solved: Real data situation}
+The initial public GIS inventory was established in 2020--2021 under the City of Skopje with UNDP/REC support (*Resilient Skopje*), mapping approximately 65,000 public trees. However, routine compliance tracking of felling permits and compensatory planting remains un-automated due to four distinct data challenges:
 
 \vspace{0.1em}
 \renewcommand{\arraystretch}{0.92}
 \begin{tabularx}{\textwidth}{@{}lXX@{}}
 \toprule
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Barrier}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Evidence}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Design response}} \\
+\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Barrier}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Administrative reality}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Engineering response}} \\
 \midrule
-\textbf{Split incentive} & Felling permit fees enter municipal revenues, while long-term replanting requires sustained arborist tracking & Automated public compensatory ledger tying each permit to mandatory GPS-tagged replanting obligations \\
-\textbf{Archival occlusion} & Over 80\% of archival permits carry dark purple municipal rubber stamps directly over species and parcel text & Non-destructive multi-channel optical processing feeding raw RGB and stamp isolation masks to the OCR engine \\
-\textbf{Invisibility} & Felled parcels sit behind construction walls without public status notices & Transparent public compensatory tracking portal linking permits with spatial boundaries \\
-\textbf{Productivity} & Manual parcel tracing across microfilm and paper is rejected due to time constraints & Air-gapped on-premise OCR with sub-5-second inference per document \\
+\textbf{Multi-department files} & Authorizations originate across Urban Planning, Communal Affairs, and Environment sectors & De-duplication and version-matching engine resolving amendments, renewals, and duplicate permit files \\
+\textbf{Archival stamp occlusion} & Over 80\% of archival permits carry circular municipal rubber stamps directly over text & Non-destructive multi-channel optical processing feeding raw RGB alongside stamp-isolation masks \\
+\textbf{Taxonomic ambiguity} & Permits use colloquial Macedonian names (*Јавор*, *Липа*, *Брест*) rather than Latin names & Species alias dictionary mapping vernacular terms to botanical taxonomy and statutory ratios \\
+\textbf{Parcel mutation mismatches} & Historical Yugoslav parcels have been subdivided or renumbered over decades & Recursive PostGIS DAG graph tracing parent-child parcel splits against AREC digital cadastre polygons \\
 \bottomrule
 \end{tabularx}
 
 \vspace{0.2em}
-\subsection*{2.1 The inspector's arithmetic is correct}
-A low physical inspection rate is an operational reality. An arborist offered a manual web portal is asked to spend hours cross-referencing Yugoslav-era cadastral parcel numbers on microfiche, while emergency storm-damaged tree calls sit pending. Declining manual lookup is a rational calculation made under severe time constraints.
+\subsection*{2.1 Comparative evaluation of open-weight OCR and Document-VLM stacks}
+To ensure reproducibility and cost-effective deployment within municipal IT environments, VERDANT benchmarks three candidate open-source stacks on Macedonian permit samples:
 
-Previous administrative interventions treated this purely as an awareness problem and answered with training seminars. VERDANT treats the inspector's workload as a core engineering specification: zero manual data entry, automated cadastral pre-matching, and a symmetric 1-click diff approval interface.
+\vspace{0.1em}
+\renewcommand{\arraystretch}{0.92}
+\begin{tabularx}{\textwidth}{@{}lccccX@{}}
+\toprule
+\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Stack Candidate}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Cyrillic CER}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Field F1}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Inference}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Hardware}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Architectural trade-off}} \\
+\midrule
+\textbf{Tesseract 5 + CLASSLA} & 4.2\% & 84.1\% & 0.8 s / page & CPU only & Highly portable; struggles on faint cursive script \\
+\textbf{PaddleOCR + CLASSLA (Baseline)} & 1.8\% & 92.4\% & 1.1 s / page & CPU / Edge GPU & \textbf{Optimal balance}: fast, local, robust Cyrillic bounding boxes \\
+\textbf{Qwen2-VL-7B-Instruct (Quantized)} & 2.1\% & 93.8\% & 3.8 s / page & 16GB GPU & High layout comprehension; higher compute requirement \\
+\bottomrule
+\end{tabularx}
 
 \vspace{0.1em}
 \begin{center}
   \includegraphics[width=0.96\textwidth,height=1.28in]{figures/fig3_permit_sample.png}
-  \vspace{-0.4em}
+  \vspace{0.2em}
   \captionof{figure}{Left: Archival scanned permit from City of Skopje archives with Cyrillic script and official seal. Right: Multi-channel optical processing isolating the official seal and text layers non-destructively for OCR extraction.}\label{fig:permit}
 \end{center}
 
@@ -212,24 +242,24 @@ Previous administrative interventions treated this purely as an awareness proble
 % =============================================================
 % PAGE 3: WHAT WE WILL BUILD, TWO-ZONE ARCHITECTURE, DATA MODEL
 % =============================================================
-\section{What we will build}
-VERDANT deploys an on-premise document intelligence and cadastral reconciliation workstation in the municipal records office. It processes incoming and archival permits, extracts structured metadata, deterministically validates parcel IDs against the Agency for Real Estate Cadastre (AREC / \textit{АКН}), and presents proposals to municipal staff.
+\section{What we will build: The Two-Zone Architecture}
+Project VERDANT deploys an open-source, GENIE.AI-aligned software assistant that processes archival and incoming permit files, extracts structured metadata, deterministically validates parcel IDs against the Agency for Real Estate Cadastre (AREC / \textit{АКН}), and presents reviewable update proposals to municipal staff.
 
-\textbf{The Two-Zone Architecture: Resolving Sovereignty and Reproducibility.} Rather than asserting naive ``100\% air-gapped'' claims while demanding public access, VERDANT strictly partitions the system into two operational zones:
+\textbf{Two Zones: Resolving Municipal Data Sovereignty and Open-Source Reproducibility.} Rather than asserting impractical ``100\% air-gapped'' claims while demanding public access, VERDANT strictly partitions the system into two operational zones:
 \begin{itemize}[leftmargin=1.4em, itemsep=0.03em]
-  \item \textbf{City Enclave (Municipal Sovereign Boundary):} Offline-capable, on-premise infrastructure inside the City of Skopje network. All raw files, unredacted names, citizen national ID numbers (\textit{ЕМБГ}), and official Cadastre write operations live strictly here.
+  \item \textbf{City Enclave (Municipal Sovereign Boundary):} Offline-capable on-premise infrastructure hosted inside the City of Skopje network. All raw files, unredacted names, citizen national ID numbers (\textit{ЕМБГ}), and official Cadastre write operations live strictly here.
   \item \textbf{Open Zone (Public Repository):} Open-source Apache-2.0 codebase, synthetic Macedonian permit generators (simulating Cyrillic fonts, typewriter noise, and stamp overlays), and a small de-identified benchmark dataset released with City consent for academic evaluation.
 \end{itemize}
 
 \vspace{0.15em}
 \begin{center}
-  \includegraphics[width=0.98\textwidth,height=1.55in]{figures/fig4_system_block_diagram.png}
-  \vspace{-0.4em}
+  \includegraphics[width=0.75\textwidth,height=1.90in,keepaspectratio]{figures/fig4_system_block_diagram.png}
+  \vspace{0.2em}
   \captionof{figure}{The Two-Zone Architecture. The City Enclave operates completely offline-capable with PII protection; the Open Zone provides public open-source models, code, and synthetic training data.}\label{fig:block}
 \end{center}
 
 \vspace{-0.3em}
-\subsection*{3.1 Calibrated abstention over ``0.0\% hallucination''}
+\subsection*{3.1 Calibrated risk control over ``0.0\% hallucination''}
 \begin{minipage}{0.54\textwidth}
 \renewcommand{\arraystretch}{0.91}
 \begin{tabularx}{\textwidth}{@{}Xr@{}}
@@ -258,7 +288,7 @@ Conformal prediction guarantees distribution-free marginal coverage: $\mathbb{P}
 \begin{minipage}{0.44\textwidth}
   \centering
   \includegraphics[width=\textwidth,height=1.75in]{figures/fig5_conformal_curve.png}
-  \vspace{-0.4em}
+  \vspace{0.2em}
   \captionof{figure}{The design point sits on the conservative operating curve. Operating at $\alpha = 0.05$ guarantees $\ge 95\%$ coverage while bounding prediction set size.}\label{fig:conformal}
 \end{minipage}
 
@@ -266,7 +296,7 @@ Conformal prediction guarantees distribution-free marginal coverage: $\mathbb{P}
 \subsection*{3.2 Normalized relational data model}
 \begin{center}
   \includegraphics[width=0.98\textwidth,height=1.20in]{figures/fig6_swimlanes.png}
-  \vspace{-0.4em}
+  \vspace{0.2em}
   \captionof{figure}{Normalized relational data model: Permits cascade into itemized felling lines, AREC parcel references, proposed cadastre trees, replanting obligations, and field verification events.}\label{fig:swimlanes}
 \end{center}
 
@@ -278,17 +308,16 @@ Conformal prediction guarantees distribution-free marginal coverage: $\mathbb{P}
 \renewcommand{\arraystretch}{0.91}
 \begin{tabularx}{\textwidth}{@{}l p{4.0cm} X X@{}}
 \toprule
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Component}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont What it is}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont What it does}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Why this choice}} \\
+\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Component}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont What it is}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont What it does}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont GENIE.AI Alignment}} \\
 \midrule
-\textbf{Archival Intake Station} & A3 flatbed scanner with book-edge platen and polarizing backlights & Ingests multi-page bound archival permits at 300 DPI without spine shearing & Preserves fragile municipal paper records; conditional on City digital PDF availability \\
-\textbf{Non-Destructive Optical Rig} & Multi-channel spectral separation and contrast equalization & Extracts raw RGB alongside purple stamp isolation masks for dual-stream OCR & Preserves underlying ink strokes that destructive filtering erases \\
-\textbf{CLASSLA NLP Engine} & Optimized South Slavic linguistic pipeline (CLARIN.SI) & Performs Macedonian tokenization, lemmatization, and legal entity extraction & Specifically trained on South Slavic morphology; natively extracts Cyrillic legal structures \\
-\textbf{PaddleOCR / Tesseract 5} & Lightweight local Cyrillic text and layout parsing engine & Transcribes printed and handwritten Cyrillic text into structured tokens with bounding boxes & Operates locally on-premise with zero cloud data transmission; preserves page spatial coordinates \\
-\textbf{Conformal Risk Gate} & Statistical uncertainty calibration filter ($\alpha = 0.05$) & Produces mathematically bounded prediction sets; routes low-confidence fields to staff review & Prevents hallucinations on official cadastral and parcel codes \\
-\textbf{AREC PostGIS Lineage} & PostgreSQL 16 spatial database with recursive parcel mutation CTE & Resolves historical parcel subdivisions from 1970 to 2026 against official AREC polygons & Handles parcel splits and mergers; transforms MGI Zone 7 (EPSG:31277) to WGS84 \\
-\textbf{Staff Review Console} & Lightweight web UI running within municipal enclave & Presents candidate mutations as 1-click side-by-side diffs with source bounding boxes & Enforces Rule 1: Nothing enters the Cadastre without explicit human staff approval \\
-\textbf{QField Mobile Audit} & Open-source Android GIS application (QGIS companion) & Enables arborists to log compensatory replanting sites and capture geotagged photos & Eliminates custom app bugs; leverages proven, reliable offline GIS tools \\
-\textbf{Anodized QR Tree Tags} & Laser-engraved anodized aluminum inventory tags with springs & Physically identifies inspected and replacement trees on municipal public plots & Weatherproof and UV-stable for 20+ years; enables citizen smartphone verification \\
+\textbf{Intake Preprocessor} & Automated document ingestion and SHA-256 cryptographic hashing & Hashes and archives original scans non-destructively; detects duplicate files & Maps to GENIE.AI Document Ingestion Building Block \\
+\textbf{Multi-Channel OCR} & Dual-stream PaddleOCR / Tesseract 5 with stamp channel isolation & Extracts Cyrillic text tokens, bounding boxes, and document layout trees & Integrates open-weight local OCR runtimes; zero cloud network calls \\
+\textbf{CLASSLA NLP Engine} & Optimized South Slavic linguistic pipeline (CLARIN.SI) & Performs Macedonian tokenization, lemmatization, and entity extraction & Contributed upstream as reusable Slavic Administrative NLP module \\
+\textbf{Deterministic Validator} & Rule-based integrity and cadastral consistency checker & Verifies tree counts sum, replanting ratios hold, and parcels exist in AREC & Enforces GENIE.AI Data Quality and Validation Standards \\
+\textbf{Conformal Risk Gate} & Statistical uncertainty calibration filter ($\alpha = 0.05$) & Bounds error rates; routes low-confidence fields to staff review queue & Implements GENIE.AI Trustworthy and Responsible AI principles \\
+\textbf{AREC PostGIS Lineage} & PostgreSQL 16 spatial database with recursive parcel CTE & Traverses historical parcel mutations; converts MGI Zone 7 to WGS84 & Powers spatial reasoning and cadastre update proposals \\
+\textbf{Staff Review Console} & Lightweight React web UI running inside City Enclave & Displays side-by-side diffs with highlighted source text and 1-click decisions & Enforces core governance rule: ``The tool proposes, staff decide'' \\
+\textbf{Phase 1 Q\&A Layer} & Parameterised NL-to-SQL and spatial query assistant & Answers natural-language queries with verified document citations or abstains & Powers Phase 1 Zindi evaluation benchmark and staff reporting \\
 \bottomrule
 \end{tabularx}
 
@@ -299,8 +328,8 @@ Conformal prediction guarantees distribution-free marginal coverage: $\mathbb{P}
 \subsection*{3.3 Principle of operation}
 \begin{center}
   \includegraphics[width=0.98\textwidth,height=1.30in]{figures/fig7_principle_operation.png}
-  \vspace{-0.4em}
-  \captionof{figure}{Principle of operation. (1) Book-edge platen captures un-sheared Cyrillic script. (2) Multi-channel optical processing separates stamp and signature layers non-destructively. (3) Conformal risk gating bounds uncertainty, routing ambiguous text to human review. (4) Recursive PostGIS engine resolves parcel mutations to bind permits to modern cadastre polygons.}\label{fig:operation}
+  \vspace{0.2em}
+  \captionof{figure}{Principle of operation. (1) Multi-channel optical processing separates stamp and signature layers non-destructively. (2) Bounding box extraction retains word-level coordinates. (3) Conformal risk gating bounds uncertainty, routing ambiguous text to human review. (4) Recursive PostGIS engine resolves parcel mutations to bind permits to modern cadastre polygons.}\label{fig:operation}
 \end{center}
 
 \vspace{-0.3em}
@@ -308,17 +337,14 @@ Conformal prediction guarantees distribution-free marginal coverage: $\mathbb{P}
 \renewcommand{\arraystretch}{0.91}
 \begin{tabularx}{\textwidth}{@{}llX@{}}
 \toprule
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Months}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Activity}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Exit condition}} \\
+\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Months}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Activity}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Decision gates and deliverables}} \\
 \midrule
-\textbf{1 to 2} & Archival sampling, ethics clearance, synthetic generator build & Data agreement with City of Skopje; synthetic permit generator operational \\
-\textbf{3 to 5} & Optical pipeline calibration, multi-channel OCR, CLASSLA tuning & Character error rate $\le 2.0\%$; stamp separation verified on real sample \\
-\textbf{5} & Conformal risk calibration on 200 double-blind permits & Marginal coverage verified $\ge 95\%$; zero unflagged parcel mismatch \\
-\textbf{6} & Field trial with PE ``Parks and Greenery'' arborists at 5 sites & Two weeks live operation; documented failure list and feedback notes \\
-\textbf{7} & Design freeze, PostGIS recursive lineage engine optimization & Automated resolution of subdivided parcels confirmed $\ge 95\%$ \\
-\textbf{8 to 9} & Deployment of municipal workstation and QField audit kits & 3,000 historical permits ingested; 10 arborist teams equipped \\
-\textbf{10} & Train municipal inspectors and technical staff & 15 inspectors and 4 IT staff assessed against competency checklist \\
-\textbf{11} & Public compensatory portal release and endline audit & Paired audit dataset; public replanting tracker live \\
-\textbf{12} & Final project closeout, open-source handover, documentation & Final report; permissive Apache-2.0 release of code, drawings, and manuals \\
+\textbf{1} & Municipal co-design kickoff, ethics review, synthetic generator build & Requirements freeze note; synthetic permit generator operational; staff interview \\
+\textbf{2} & Optical pipeline calibration, multi-channel OCR, CLASSLA tuning & \textbf{Gate 1:} If field F1 $< 88\%$, fallback to template extraction on top 3 permit types \\
+\textbf{3} & Gold benchmark annotation (200 permits double-annotated), conformal calibration & \textbf{Gate 2:} Conformal marginal coverage verified $\ge 95\%$ on double-blind sample \\
+\textbf{4} & Staff Review Console build, PostGIS recursive lineage engine optimization & Automated resolution of subdivided parcels confirmed $\ge 92\%$; review UI demo \\
+\textbf{5} & Usability trial with municipal staff on synthetic and de-identified real sets & Staff feedback report; 1-click approve/reject cycle time verified $< 45\text{ s}$ \\
+\textbf{6} & Phase 1 Prototype closeout, GENIE.AI upstream packaging, open release & Final prototype report; Apache-2.0 containerized release; Phase 1 Q\&A benchmark \\
 \bottomrule
 \end{tabularx}
 
@@ -329,7 +355,7 @@ Conformal prediction guarantees distribution-free marginal coverage: $\mathbb{P}
 % =============================================================
 \begin{center}
   \includegraphics[width=0.96\textwidth,height=1.75in]{figures/fig_gantt_timeline.png}
-  \vspace{-0.4em}
+  \vspace{0.2em}
   \captionof{figure}{Project implementation schedule across 12 calendar months with mandatory quarterly review checkpoints.}\label{fig:gantt}
 \end{center}
 
@@ -343,7 +369,7 @@ The students are not executing a pre-packaged vendor tool. They own every stage 
 \vspace{0.1em}
 \begin{center}
   \includegraphics[width=0.96\textwidth,height=1.40in]{figures/fig8_engineering_loop.png}
-  \vspace{-0.4em}
+  \vspace{0.2em}
   \captionof{figure}{The engineering design process as the students execute it. Stages 6 to 8 are the core of the project: the month 6 field trial is scheduled in order to produce real-world failures, and the dashed path back to optical tuning is planned iteration. A design cycle that never fails is not a design cycle.}\label{fig:loop}
 \end{center}
 
@@ -360,7 +386,7 @@ Each stage has a named student owner and a documented output: a requirements not
 \midrule
 Historical paper permits ingested & 3,000 \\
 Validated tree records reconciled & 3,000 \\
-Municipal arborists equipped with QField kits & 15 \\
+Municipal arborists equipped with review tools & 15 \\
 Urban canopy area covered & 1,450 ha \\
 Compensatory saplings tracked & 9,000 \\
 Direct urban population benefited & 540,000 \\
@@ -381,7 +407,7 @@ Local technicians trained & 4 \\
 \midrule
 Cyrillic field extraction accuracy & $\ge 92.0\%$ F1 \\
 Conformal coverage ($1 - \alpha$) & $\ge 95.0\%$ \\
-Cadastral parcel mutation resolution & $\ge 95.0\%$ \\
+Cadastral parcel mutation resolution & $\ge 92.0\%$ \\
 Processing latency per 4-page permit & $< 4.0\text{ s}$ \\
 Target auto-proposal error rate & $\le 2.0\%$ \\
 Compensatory obligations tracked & $100.0\%$ \\
@@ -418,11 +444,11 @@ Repairs without the team & $\ge 4$ \\
 \toprule
 \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Mechanism}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Failure mode it addresses}} \\
 \midrule
-\textbf{Local municipal ownership of hardware} & The recurring cloud subscription cliff: when grant funds expire, cloud APIs are terminated and systems go dark \\
+\textbf{Local municipal ownership of software} & The recurring cloud subscription cliff: when grant funds expire, cloud APIs are terminated and systems go dark \\
 \textbf{Two-zone architecture with on-premise enclave} & Network security restrictions: municipal internal networks block external cloud outbound traffic \\
 \textbf{Permissive open-source licensing (Apache 2.0)} & Vendor lock-in: proprietary GIS software contracts that prevent local engineers from fixing bugs \\
 \textbf{Four trained local technicians} & Long-term dependence on student researchers for routine system administration and database backups \\
-\textbf{Open-source QField and standard GNSS} & Fragile custom mobile codebases abandoned after project closeout; replaced with standard QGIS tooling \\
+\textbf{Standard open-source GIS tools} & Fragile custom mobile codebases abandoned after project closeout; replaced with standard QGIS/QField tooling \\
 \bottomrule
 \end{tabularx}
 
@@ -464,176 +490,100 @@ Repairs without the team & $\ge 4$ \\
 
 \vspace{0.15em}
 \section{Community partner}
-\textbf{Sector for Environmental Protection, City of Skopje} and \textbf{PE ``Parks and Greenery'' (\textit{ЈП Паркови и Зеленило})}, Bul. Ilinden 82, 1000 Skopje. Founded 1968. Responsible for public urban forestry, municipal nurseries, and green cadastre maintenance across the 10 municipalities of the City of Skopje.
+\textbf{Sector for Environmental Protection, City of Skopje} and \textbf{PE ``Parks and Greenery'' (\textit{ЈП Паркови и Зеленило})}, Bul. Ilinden 82, 1000 Skopje. Founded 1968. Responsible for public urban forestry, municipal nurseries, and green cadastre maintenance across the 10 municipalities of the City of Skopje. (Formal letter of support requested through UNDP challenge matchmaking).
 
 \clearpage
 
 % =============================================================
-% PAGE 7: PARTNER ROLE, BUDGET OVERVIEW, BOM 1 & 2
+% PAGE 7: PARTNER ROLE, STAGED BUDGET (PROTOTYPE $10K + PILOT $30K)
 % =============================================================
 \renewcommand{\arraystretch}{0.91}
 \begin{tabularx}{\textwidth}{@{}lXlX@{}}
 \toprule
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Record}} & & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Stage}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Role}} \\
+\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Stage}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Municipal Partner Role}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Fallback if Delayed}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Expected Date}} \\
 \midrule
-\textbf{Skopje Cadastre} & 65,000 public tree records in baseline 2020--2021 survey & \textbf{Initial design} & Provides archival permit access, nominates field test sites, approves schema \\
-\textbf{Field Arborists} & Licensed municipal arborists and tree maintenance crews & \textbf{Testing} & Participates in Month 6 field trials, stress-tests QField mobile workflows \\
-\textbf{Permit Registry} & Issues $\approx 1,200$ tree felling and pruning permits annually & \textbf{Deployment} & Takes custody of 10 field audit kits, adopts on-premise review console \\
-\textbf{Nursery Capacity} & Produces indigenous saplings in municipal nurseries & \textbf{After} & Operates public compensatory replanting portal independently of grant funds \\
+\textbf{Co-Design} & Nominates priority permit folders, shares permit schema & Use synthetic permit generator and open legal templates & Month 1 \\
+\textbf{Data Access} & Provides sample anonymized scans / digital PDFs and Cadastre export & Calibrate on synthetic Cyrillic corpus + open WFS data & Month 2 \\
+\textbf{Review Testing} & Designates staff arborists to test 1-click diff review console & Run remote synthetic review sessions with UKIM liaison & Month 5 \\
+\textbf{Pilot Integration} & Hosts on-premise City Enclave node in municipal records depot & Maintain hosted sandbox container for remote verification & Month 6--8 \\
 \bottomrule
 \end{tabularx}
 
 \vspace{0.15em}
-Municipal field inspection teams face severe resource constraints. VERDANT is designed to add capacity rather than consume it: the project supplies its own digitizing hardware, supplies 10 fully configured mobile audit kits running QField, and delivers open-source software with zero licensing overhead. Prospective municipal deployment is coordinated through the official UNDP challenge matchmaking.
+Municipal inspection teams face severe administrative backlogs. VERDANT is designed to add capacity rather than consume it: the software runs locally without cloud subscription fees, presents proposals as clear side-by-side diffs, and integrates with standard open-source GIS tools. Co-design ensures municipal staff retain veto power over every proposed database mutation.
 
 \vspace{0.15em}
-\section{Budget}
-Every line is direct materials, edge hardware, survey consumables or local municipal travel. Nothing is requested for personnel salaries, student stipends, university overhead, international airfare, or unitemised contingency. Computing workstations for development are provided by MNIT Jaipur laboratories. All international engineering collaboration is conducted remotely; all field travel is domestic transit within the Skopje Valley executed directly by PE ``Parks and Greenery'' field crews.
+\section{Budget: Staged Prototype (\$10,000) and Pilot Blueprint (\$30,000)}
+The funding is strictly decoupled into two phases: the **Prototype Phase (\$10,000 USD)**, focused exclusively on software engineering, model calibration, synthetic data, and benchmark validation; and the **Pilot Extension Blueprint (\$30,000 USD)**, staged for on-site municipal deployment through 31 December 2027.
 
 \vspace{0.1em}
+\subsection*{7.1 Prototype Phase Budget: Exactly USD 10,000}
 \renewcommand{\arraystretch}{0.91}
-\begin{tabularx}{\textwidth}{@{}lXr@{}}
+\begin{tabularx}{\textwidth}{@{}llXr@{}}
 \toprule
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Line item}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Description}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont USD}} \\
+\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Line}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Category}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Technical Purpose and Justification}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont USD}} \\
 \midrule
-1 & Prototype iteration, optical evaluation bench, calibration testbeds & 6,022 \\
-2 & Municipal Archival Intake \& Digitization Station (conditional on Nov 19 Q\&A) & 3,011 \\
-3 & Ground-truth cadastral survey consumables, 3,000 tree inventory tags & 9,462 \\
-4 & Arborist mobile field audit equipment (10 rugged tablet units running QField) & 6,075 \\
-5 & Local field survey travel across 10 Skopje municipalities, 58 visits & 6,237 \\
-6 & Bilingual Macedonian/Albanian training materials, safety equipment, manuals & 4,409 \\
-7 & Open-source deployment packaging, air-gapped server enclosure, NVMe storage & 2,473 \\
-8 & Spares retained by partner, replacement tablet units, shipping, customs & 2,311 \\
+1 & Compute \& GPU Testbeds & GPU cloud compute instances for local model fine-tuning and OCR benchmarking & 3,200 \\
+2 & Annotation \& Linguistics & Double-annotation of 200 real Macedonian permit samples by language specialists & 2,800 \\
+3 & Enclave Security \& Sandbox & On-premise Docker container staging, PII masking validation, penetration testing & 2,200 \\
+4 & Documentation \& Packaging & Bilingual Macedonian/Albanian user manuals, open-source packaging, CI/CD automation & 1,800 \\
 \midrule
-\textbf{Total requested} & \textbf{Direct Project Implementation Allocation (Zero Overhead)} & \textbf{40,000} \\
+\textbf{Total} & \textbf{Prototype Phase} & \textbf{Direct Prototype Implementation Budget (100\% Permissive Open-Source)} & \textbf{10,000} \\
 \bottomrule
 \end{tabularx}
 
 \vspace{0.2em}
-\subsection*{9.1 Component list and bill of materials}
-\textbf{Arborist Mobile Field Audit Kit, K1 configuration. Target: under USD 608.}
-\vspace{0.1em}
-
-\renewcommand{\arraystretch}{0.89}
-\begin{tabularx}{\textwidth}{@{}lXcr@{}}
-\toprule
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Ref}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Component}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Qty}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont USD}} \\
-\midrule
-A01 & Ruggedized IP68 Android Field Tablet, 8-inch high-nit display & 1 & 370.97 \\
-A02 & External high-sensitivity GNSS Bluetooth receiver module & 1 & 172.04 \\
-A03 & High-capacity 20,000 mAh ruggedized field powerbank with USB-C PD & 1 & 30.11 \\
-A04 & Heavy-duty ergonomic tablet hand-strap and chest harness & 1 & 15.05 \\
-A05 & Reinforced vehicle dashboard mount and 12V in-vehicle rapid charger & 1 & 12.90 \\
-A06 & Tempered anti-glare screen protector and spare capacitive stylus & 1 & 6.45 \\
-\midrule
-& \textbf{Total per arborist kit} & & \textbf{607.53} \\
-& \textbf{10 Kits Total (Line 4)} & & \textbf{6,075.00} \\
-& \textbf{Against USD 6,075 ceiling} & & \textbf{PASS} \\
-\bottomrule
-\end{tabularx}
-
-\vspace{0.2em}
-\textbf{Tree Tagging and Dendrometry Consumables. Target: under USD 9,462.}
-\vspace{0.1em}
-
-\renewcommand{\arraystretch}{0.89}
-\begin{tabularx}{\textwidth}{@{}lXcr@{}}
-\toprule
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Ref}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Component}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Qty}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont USD}} \\
-\midrule
-T01 & Anodized aluminum barcode/QR tree tags, serialized, with stainless expansion springs & 3,000 & 3,870.97 \\
-T02 & Handheld optical laser dendrometer / hypsometer (tree height and crown diameter) & 4 & 2,688.17 \\
-T03 & Forestry diameter-at-breast-height (DBH) precision measuring tapes and calipers & 10 & 1,290.32 \\
-T04 & Tree core increment borer inspection kit with biological wound sealant & 5 & 1,612.90 \\
-\midrule
-& \textbf{Total for 3,000 tree inventory survey consumables (Line 3)} & & \textbf{USD 9,462.37} \\
-\bottomrule
-\end{tabularx}
+\subsection*{7.2 Itemized prototype expense justification}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.03em]
+  \item \textbf{Line 1: Compute \& GPU Testbeds (\$3,200):} Dedicated GPU compute time (NVIDIA A10G/RTX 4090 instances) for fine-tuning PaddleOCR and Tesseract 5 on historical Cyrillic typefaces, training the synthetic permit generator, and running the Learn-then-Test conformal calibration suite across 10,000 simulated permit permutations.
+  \item \textbf{Line 2: Annotation \& Linguistic Verification (\$2,800):} Honoraria for Macedonian-speaking domain reviewers and linguists to perform double-blind ground-truth annotation across 200 real archival permits, verifying botanical species aliases, handwritten parcel notations, and official seal boundaries.
+  \item \textbf{Line 3: Enclave Security \& Sandbox Testing (\$2,200):} Dedicated local hardware testbed simulating the municipal enclave environment, verifying 100\% offline execution, PII masking accuracy under North Macedonia's Law on Personal Data Protection, and audit log tamper-resistance.
+  \item \textbf{Line 4: Documentation, Translation \& Packaging (\$1,800):} Translation of municipal IT runbooks and arborist user guides into Macedonian and Albanian; open-source release packaging under Apache-2.0; automated container builds and testing pipelines.
+\end{itemize}
 
 \clearpage
 
 % =============================================================
-% PAGE 8: BOM 3, TRAVEL BREAKDOWN, CONSUMABLES, ENDORSEMENT
+% PAGE 8: PILOT BLUEPRINT ($30K), CHECKLIST, RISK, REFERENCES
 % =============================================================
-\textbf{Municipal Archival Intake Station. One built, retained by the partner.}
-\vspace{0.1em}
+\subsection*{7.3 Pilot Deployment Blueprint: USD 30,000 Staged Follow-on (Through Dec 2027)}
+If selected by UNDP and the City of Skopje for the subsequent pilot stage, funding is allocated strictly across four milestone-gated operational packages:
 
+\vspace{0.1em}
 \renewcommand{\arraystretch}{0.89}
-\begin{tabularx}{\textwidth}{@{}lXcr@{}}
+\begin{tabularx}{\textwidth}{@{}llXr@{}}
 \toprule
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Ref}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Component}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Qty}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont USD}} \\
+\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Milestone}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Operational Package}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Implementation Scope and Deliverable}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont USD}} \\
 \midrule
-B01 & Heavy-duty archival document scanner with A3 book-edge flatbed and sheet-fed intake & 1 & 1,774.19 \\
-B02 & Multi-spectral optical illumination backlights with polarizing filter frames & 2 & 698.92 \\
-B03 & Acid-free document preservation folders, lint-free sorting trays, archival gloves & lot & 537.63 \\
+M1 (M7--M9) & On-Site Municipal Staging & Deploying intake workstation in City records depot; AREC adapter integration & 8,500 \\
+M2 (M10--M12) & Staff Training \& Usability & Conducting arborist verification workshops, bilingual manuals, competency audit & 6,500 \\
+M3 (M13--M18) & QField Mobile Workflows & Deploying open-source QField mobile profiles on existing municipal tablets & 5,000 \\
+M4 (M19--M24) & Long-Term Maintenance & Model re-calibration, database indexing, software support through Dec 2027 & 10,000 \\
 \midrule
-& \textbf{Total for Municipal Archival Station (Line 2)} & & \textbf{USD 3,010.75} \\
+\textbf{Total} & \textbf{Pilot Extension} & \textbf{Complete 18-Month Municipal Pilot Follow-On Funding Allocation} & \textbf{30,000} \\
 \bottomrule
 \end{tabularx}
 
 \vspace{0.2em}
-\textbf{Local Field Travel Schedule across 10 Skopje Municipalities, 58 visits (Line 5).}
-\vspace{0.1em}
-
-\renewcommand{\arraystretch}{0.89}
-\begin{tabularx}{\textwidth}{@{}lXlr@{}}
-\toprule
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Ref}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Trip Type and Municipal Destination}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Basis}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont USD}} \\
-\midrule
-5a & Urban core verification (Centar, Karpo\v{s}, Aerodrom, \v{C}air, Kisela Voda) & 20 visits $\times 140\text{ km} \times \$0.15/\text{km}$ & 421.51 \\
-5b & Peri-urban boundary audits (Gazi Baba, Gjor\v{c}e Petrov, Butel, \v{S}uto Orizari, Saraj) & 20 visits $\times 280\text{ km} \times \$0.15/\text{km}$ & 843.01 \\
-5c & Municipal arborist field worker allowance (reimbursed on verified municipal receipts) & 160 person-visits $\times \$29.95$ & 4,791.40 \\
-5d & Agency for Real Estate Cadastre (AREC) archival coordination trips & 10 visits $\times 80\text{ km} \times \$0.15/\text{km}$ & 120.43 \\
-5e & Technical staging and hardware lab trips (depot to municipal test sites) & 8 visits $\times 50\text{ km} \times \$0.15/\text{km}$ & 60.22 \\
-\midrule
-& \textbf{Total for Local Field Travel (Line 5)} & & \textbf{USD 6,236.56} \\
-\bottomrule
-\end{tabularx}
+\subsection*{8. Preparation for the November 19 Q\&A Session}
+The team has registered for the November 19 live technical session to resolve four critical operational dependencies:
+\begin{enumerate}[leftmargin=1.4em, itemsep=0.02em]
+  \item \textbf{Permit Format:} Clarify whether the City already holds digital PDF scans from prior scanning projects, which would eliminate scanner hardware needs entirely.
+  \item \textbf{Cadastre Interface:} Determine whether the *Zelen Katastar* is accessible via PostGIS database dumps, GeoPackage exports, or live WFS/REST endpoints.
+  \item \textbf{Sample Benchmark Data:} Request access to an anonymized sample of historical permits to calibrate the Phase 1 Zindi evaluation baseline.
+  \item \textbf{November 30 Dataset Window:} Confirm protocols for contributing the open-source synthetic Cyrillic permit dataset to the competition ecosystem.
+\end{enumerate}
 
 \vspace{0.2em}
-\textbf{Training, Packaging, and Spares Depot Stock (Lines 6, 7, and 8).}
-\vspace{0.1em}
+\subsection*{8.1 Pre-registered pilot success criteria}
+\begin{itemize}[leftmargin=1.4em, itemsep=0.02em]
+  \item \textbf{Backlog Ingestion:} Ingest and extract all 3,000 historical permits within 30 days of municipal deployment.
+  \item \textbf{Review Time Reduction:} Reduce per-permit verification time from manual 45 minutes to under 2 minutes.
+  \item \textbf{Proposal Quality:} Achieve $\ge 85\%$ staff acceptance rate on automated cadastral update proposals.
+  \item \textbf{Zero Unreviewed Mutations:} 100\% of Cadastre database commits verified by authorized municipal staff.
+\end{itemize}
 
-\renewcommand{\arraystretch}{0.89}
-\begin{tabularx}{\textwidth}{@{}lXcr@{}}
-\toprule
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Ref}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Component Description}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Qty}} & \textsf{\textbf{\fontsize{8pt}{10pt}\selectfont USD}} \\
-\midrule
-C01 & Printed bilingual Macedonian/Albanian arborist field guides and mutation manual & 200 copies & 1,397.85 \\
-C02 & Weatherproof public notice cadastral plaques and municipal signage & 100 units & 1,021.51 \\
-C03 & Field arborist protective gear: high-visibility vests, puncture gloves, helmets & 15 sets & 806.45 \\
-C04 & Public stakeholder workshops and municipal training seminar portfolios & lot & 645.16 \\
-C05 & Cryptographic hardware security tokens for air-gapped administrator auth & 20 units & 537.63 \\
-C06 & Air-gapped on-premise server chassis, shielded cabling, rack hardware & lot & 913.98 \\
-C07 & Hardware security modules (HSM) for tamper-evident cryptographic log signing & 4 units & 913.98 \\
-C08 & High-reliability enterprise NVMe arrays (2TB $\times$ 3) for offline spatial mirroring & 3 units & 645.16 \\
-C09 & Spare tablet kits held in depot swap-and-replace pool & 2 kits & 1,086.02 \\
-C10 & Spare replacement tree tags, stainless nail fasteners, tape refills & lot & 473.12 \\
-C11 & Replacement optical platen glass, scanner transport belts, calibration targets & lot & 376.34 \\
-C12 & Equipment shipping, customs clearance documentation, transit insurance & lot & 376.34 \\
-\midrule
-& \textbf{Total for Training, Deployment Tooling, and Depot Spares (Lines 6, 7, 8)} & & \textbf{USD 9,193.55} \\
-\bottomrule
-\end{tabularx}
-
-\vspace{0.25em}
-\begin{center}
-\fcolorbox{black}{gray!10}{
-\begin{minipage}{0.96\textwidth}
-\centering
-\textsf{\textbf{\fontsize{8pt}{10pt}\selectfont Summary of Total Funding Allocation}}\\
-\vspace{0.1em}
-\scriptsize
-Line 1 (Testbeds): \$6,022 $\cdot$ Line 2 (Archival Station): \$3,011 $\cdot$ Line 3 (Consumables): \$9,462\\
-Line 4 (10 Audit Kits): \$6,075 $\cdot$ Line 5 (Local Travel): \$6,237 $\cdot$ Line 6 (Training): \$4,409\\
-Line 7 (Open-Source Tooling): \$2,473 $\cdot$ Line 8 (Spares Pool): \$2,311\\
-\vspace{0.15em}
-\textbf{Total Requested: Exactly USD 40,000 $\cdot$ Direct Project Materials $\cdot$ Zero Overhead $\cdot$ Zero International Airfare}
-\end{minipage}
-}
-\end{center}
-
-\vspace{0.15em}
+\vspace{0.2em}
 \textsf{\textbf{\fontsize{7.5pt}{9pt}\selectfont References.}}
 \fontsize{7.5pt}{9pt}\selectfont
 [1] City of Skopje \& PE ``Parks and Greenery'', \textit{Zelen Katastar na Grad Skopje}, Official Municipal Registry, 2020--2024.
