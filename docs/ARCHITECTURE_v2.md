@@ -297,3 +297,4 @@ The following specific questions are prepared for the official challenge Q&A ses
 2. **Cadastre Integration:** What API, database export (e.g., GeoPackage, PostGIS dump), or WFS/WMS endpoints exist for the current *Zelen Katastar*?
 3. **Labelled Ground Truth:** Will UNDP or the City provide a set of anonymised gold-standard permit extractions to establish a public evaluation baseline for Track 3 participants?
 4. **Benchmarking Criteria:** How will the Zindi Phase 1 evaluation score citations, partial field matches, and calibrated abstentions?
+

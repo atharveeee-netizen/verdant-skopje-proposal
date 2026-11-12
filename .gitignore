@@ -1,4 +1,4 @@
-# LaTeX build files
+# Build artifacts
 *.aux
 *.log
 *.out
@@ -11,6 +11,9 @@
 __pycache__/
 *.pyc
 
-# OS generated files
+# Scratch build scripts
+scratch/
+
+# OS metadata
 .DS_Store
 Thumbs.db
